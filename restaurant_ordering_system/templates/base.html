@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Классный ресторан</title>
+    <link type="text/css" href="{% static 'orders/css/style.css' %}" rel="stylesheet">
+</head>
+<body link="black" vlink="black">
+
+<div class="wrapper">
+    <div class="page">
+        <div class="header">
+            <div class="header_text">КУХНЯ</div>
+        </div>
+        <div class="content" >
+            <div class="stages">
+                {% block content %} {% endblock %}
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <p> Заместитель директора тел.: 5-**-**-**
+        <p> Бухгалтерия тел.: 5-**-**-**
+        <p> Отдел кадров тел.: 5-**-**-**
+        <p> Техническая поддержка тел.: 5-**-**-**
+    </div>
+</div>
+
+</body>
+</html>
