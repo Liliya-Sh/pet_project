@@ -15,7 +15,7 @@ class User(AbstractUser):
     username = None
     email = models.EmailField(unique=True, verbose_name='Почта')
     phone = models.CharField(max_length=35, verbose_name='Телефон', null=True, blank=True)
-    address = models.CharField(max_length=50, verbose_name='Адрес доставки', null=True, blank=True)
+    address = models.CharField(max_length=255, verbose_name='Адрес доставки', null=True, blank=True)
     is_active = models.BooleanField(default=False)
     position = models.CharField(max_length=30, verbose_name='Должность', null=True, blank=True,
                                 choices=Positions.choices, default=Positions.CUSTOMER)
