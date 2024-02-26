@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+    <form method="POST" enctype="multipart/form-data">
+        <h3>Войти</h3>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Войти</button>
+        <br>
+        <a href="{% url 'users:register' %}">Зарегистрироваться</a><br>
+        <a href="{% url 'users:reset_password' %}">Сбросить пароль</a><br>
+    </form>
+{% endblock %}
