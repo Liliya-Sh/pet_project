@@ -38,13 +38,13 @@
 
 При необходимости обновите: 
 
-     python -m ensurepip --upgrade 
+    python -m ensurepip --upgrade 
 
-     python -m pip install --upgrade pip 
+    python -m pip install --upgrade pip 
 
-     pip install --upgrade setuptools 
+    pip install --upgrade setuptools 
 
-Установить зависимости:
+Установить зависимости, подняться на уровень выше в pet_project:
 
     pip install -r requirements.txt    
 
@@ -53,11 +53,17 @@
 
      python manage.py csu
 
-Запустить программу в консоли PyCharm:
+Отметить директорию restaurant_ordering_system как Sources Root, в PyCharm:
+- Щелкните правой кнопкой мыши на директории.
+- В контекстном меню выберите Mark Directory as (Отметить директорию как).
+- Затем выберите Sources Root (Корень исходников).
+
+
+Запустить программу в консоли PyCharm, подняться на уровень выше в restaurant_ordering_system:
 
     python manage.py runserver
 
-Открыть в браузере страницу http://127.0.0.1:8000/
+Открыть в браузере(Google Chrome) страницу http://127.0.0.1:8000/
 ______________________________________________________________________
 
 ## Тестирование:
@@ -122,9 +128,9 @@ ______________________________________________________________________
     http://127.0.0.1:8005/users/password-change/
 
     Заполняем необходимые поля, например если пользователь admin:
-        - **Старый пароль:** 123
-        - **Новый пароль:** !!qazxcv
-        - **Подтверждение пароля:** !!qazxcv
+    - **Старый пароль:** 123
+    - **Новый пароль:** !!qazxcv
+    - **Подтверждение пароля:** !!qazxcv
 
     Если все поля заполнены правильно, и пароль не был легким, то пароль поменяется.
 
