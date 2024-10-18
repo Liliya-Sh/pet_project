@@ -1,81 +1,68 @@
+from django.contrib.auth import get_user_model
 from django.db import models
-from decimal import Decimal
 
+from restaurant_website.models import Menu
 
-class Menu(models.Model):
-    """Блюда ресторана"""
-    name_dish = models.CharField(max_length=50, verbose_name='Наименование блюда')
-    price = models.DecimalField(max_digits=6, decimal_places=2, verbose_name='Цена')
-    image = models.ImageField(upload_to="photo_dish", blank=True, default='Добавить изображение')
-
-    class Meta:
-        ordering = ['pk']
-
-    def __str__(self):
-        return self.name_dish - self.price - self.image
 
 class Order(models.Model):
     """Заказ, который сделал клиент"""
-    STATUS_COOK = 'Приготовлен'
-    STATUS_NOT_COOK = 'Готовится'
-    STATUS_CHOIСES = [
-        (STATUS_NOT_COOK, 'Готовится'),
-        (STATUS_COOK, 'Приготовлен'),
+    objects = None
+
+    PAYMENT_ON_GET = 'Оплата при получении'
+    PAYMENT_BY_CARD = 'Оплата картой'
+    PAYMENT_STATE = [
+        (PAYMENT_ON_GET, 'Оплата при получении'),
+        (PAYMENT_BY_CARD, 'Оплата картой'),
     ]
 
-    STATUS_DELIVERED = 'Доставлено'
-    STATUS_NOT_DELIVERED = 'Доставляется'
-    STATUS_CHOIСES_2 = [
-        (STATUS_NOT_DELIVERED, 'Доставляется'),
-        (STATUS_DELIVERED, 'Доставлено'),
-    ]
-
-    CHOICES_PAY = (
-        ('card', 'Карта'),
-        ('cash', 'Наличные')
-    )
-    customer = models.ForeignKey(User, on_delete=models.CASCADE, null=True, verbose_name='Код клиента')
+    user = models.ForeignKey(get_user_model(),
+                             on_delete=models.SET_NULL,
+                             related_name='orders',
+                             null=True,
+                             blank=True)
+    first_name = models.CharField(max_length=50, verbose_name='Имя')
+    email = models.EmailField(verbose_name='Почта')
+    phone_number = models.CharField(max_length=35, verbose_name="Номер телефона")
+    address = models.TextField(null=True, blank=True, verbose_name="Адрес доставки")
+    requires_delivery = models.BooleanField(default=False, verbose_name="Требуется доставка")
     creation_time = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания заказа')
-    amount = models.DecimalField(max_digits=6, decimal_places=2, verbose_name='Сумма заказа')
     comment = models.TextField(blank=True, null=True, verbose_name='Комментарий к заказу')
-    payment_method = models.CharField(max_length=50, choices=CHOICES_PAY, verbose_name='Способ оплаты')
-    status_cook = models.CharField(
+    payment_state = models.CharField(
         max_length=32,
-        choices=STATUS_CHOIСES,
-        default=STATUS_NOT_COOK,
-        verbose_name='Статус готовности заказа')
-    status_delivery = models.CharField(
-        max_length=32,
-        choices=STATUS_CHOIСES_2,
-        default=STATUS_NOT_DELIVERED,
-        verbose_name='Статус доставки блюда')
+        choices=PAYMENT_STATE,
+        default=PAYMENT_BY_CARD,
+        verbose_name='Способ оплаты')
 
     class Meta:
         ordering = ['pk']
+        verbose_name = 'Заказ'
+        verbose_name_plural = 'Заказы'
 
     def __str__(self):
-        return self.creation_time - self.amount - self.comment - self.order_readiness - self.order_delivery
+        return f'Заказ {self.id}'
 
-    def get_amount(self):
-        amount = Decimal(0)
-        for item in self.orderitem_set.all():
-            amount += item.amount
-        return amount
+    def get_total_cost(self):
+        return sum(item.get_cost() for item in self.items.all())
 
 
 class OrderItem(models.Model):
     """Составляющие заказа"""
-    order = models.ForeignKey(Order, on_delete=models.CASCADE, null=True)
-    dish = models.ForeignKey(Menu, on_delete=models.PROTECT, null=True, verbose_name='Код блюда')
+    order = models.ForeignKey(Order,
+                              related_name='items',
+                              on_delete=models.CASCADE)
+    product = models.ForeignKey(Menu,
+                                related_name='order_items',
+                                on_delete=models.CASCADE,
+                                verbose_name='Код блюда')
     quantity = models.PositiveIntegerField(default=1, verbose_name='Количество')
     price = models.DecimalField(max_digits=6, decimal_places=2, verbose_name='Сумма')
-    discount = models.DecimalField(max_digits=6, decimal_places=2, default=0, verbose_name='Скидка')
+    discount = models.DecimalField(max_digits=6, decimal_places=2, default=0, verbose_name='Скидка в %')
+
     class Meta:
         ordering = ['pk']
 
-    def __str__(self):
-        return self.order - self.dish - self.quantity - self.price - self.discount
+    def get_cost(self):
+        return round(self.price * self.quantity, 2)
 
-    @property
-    def amount(self):
-        return self.quantity * (self.price - self.discount)
+    def __str__(self):
+        return str(self.id)

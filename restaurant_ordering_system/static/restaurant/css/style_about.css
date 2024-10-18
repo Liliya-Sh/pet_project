@@ -1,0 +1,79 @@
+/* Стили для страницы о нас */
+.contact{
+    margin-inline: auto;
+    display: flex;
+    margin-top: 120px;
+    overflow: auto;
+    overflow-x: hidden;
+    margin-bottom: auto;
+    border: 1px solid white;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    width: 75%;
+}
+.contact h2{
+    text-align: center;
+    margin: 19px;
+}
+
+.row{
+    display: flex;
+    padding: 15px;
+    flex-wrap: nowrap;
+    width: 100%;
+    align-items: center;
+}
+
+.form-contact p{
+    margin-block: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+}
+
+.form-contact input[type=text], select, textarea {
+}
+    padding: 3px;
+    margin-bottom: 6px;
+}
+
+.form-contact input[type=submit] {
+    background-color: white;
+    color: black;
+    margin-top: 2%;
+    border: 1px solid black;
+    outline: 0;
+    display: inline-block;
+    padding: 5px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.form-contact input[type=submit]:hover {
+    background-color: #555;
+    color: white;
+}
+
+.column-about{
+    float: left;
+    width: 50%;
+    margin-top: 6px;
+    padding: 20px;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+@media screen and (max-width: 600px) {
+    .column, input[type=submit] {
+        width: 100%;
+        margin-top: 0;
+    }
+}

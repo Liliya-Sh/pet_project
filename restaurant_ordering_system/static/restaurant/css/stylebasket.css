@@ -1,0 +1,123 @@
+/*Стиль корзины*/
+
+.basket {
+    display: flex;
+    flex-direction: column;
+	position: sticky;
+	top:7%;
+    margin-top: 7%;
+	overflow: auto;
+	overflow-x: hidden;
+	width: 22%;
+	height: fit-content;
+	border: 1px solid white;
+	background: rgba(255, 255, 255, 0.8);
+	border-radius: 8px;
+}
+.basket h2 {
+    text-align: center;
+    font-size: 23px;
+    margin-block: 5%;
+}
+.basket h1 {
+    text-align: center;
+    font-size: 23px;
+    margin-block: 5%;
+}
+.basket a {
+    text-decoration: none;
+}
+.basket p {
+    border: black 1px;
+    margin: auto;
+    text-align: center;
+    margin: 2px;
+}
+
+.basket-inf{
+    display: flex;
+    flex-direction: column;
+    padding: 6px;
+}
+.basket-inf div{
+    display: flex;
+    margin-top: 4px;
+}
+
+.total{
+    margin-block: 5%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.remove-cart{
+    display: flex;
+    justify-content: space-around;
+}
+
+.item-in-basket{
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.item-in-cart img{
+    width:100%,
+}
+.item-in-cart a{
+    width: 30%;
+}
+
+.remove-cart input{
+    height: 25px;
+    border: 1px solid #696969;
+    border-radius: 4px;
+    width: 100px;
+}
+
+.remove-item {
+    color: #000;
+    font-size: 17px;
+    font-weight: bold;
+}
+.remove-item:hover,
+.remove-item:focus {
+    color: red;
+    cursor: pointer;
+}
+
+.place-an-order{
+    justify-content: center;
+
+}
+
+.item-actions{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+.item-actions form{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.item-actions input {
+    height: 25px;
+    border: 1px solid #696969;
+    border-radius: 4px;
+    width: 100px;
+}
+.item-actions input: hover{
+    background-color: #555;
+    text: white;
+}
+
+.item-actions label {
+    margin: 2%;
+    display:inline-block;
+}

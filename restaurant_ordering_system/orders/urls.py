@@ -1,9 +1,9 @@
 from django.urls import path
-from . import views
+from orders import views
+
+app_name = 'orders'
 
 urlpatterns = [
-    path('', views.index, name='home'), #http://127.0.0.1:8000/
-    path('cook/', views.cook, name='cook'),    #http://127.0.0.1:8000/cook/
-    path('delivery/', views.deliveryman, name='delivery'),   #http://127.0.0.1:8000/delivery/
+    path('create/', views.order_create, name='order_create'),
 
 ]

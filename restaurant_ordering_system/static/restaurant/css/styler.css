@@ -1,0 +1,175 @@
+/*Стиль сайта пиццерии*/
+
+.header {
+    height: 910px;
+	background: url('../images/header.jpg') no-repeat center;
+	background-size: cover;
+	border: 1px solid snow;
+	border-radius: 8px;
+}
+
+/* Для экранов шириной 480px и меньше */
+@media (max-width: 480px) {
+    .header {
+        height: 400px;
+        background-size: cover;
+    }
+}
+
+.header_text {
+	overflow: hidden;
+	padding-top: 19%;
+	padding-left: 17%;
+	width: 100%;
+	font-family: "Monotype Corsiva", Tahoma, Arial;
+	color: snow;
+	font-size: 10vw;
+}
+@media (max-width: 600px) {
+            .header_text {
+                font-size: 18vw; /* Уменьшение размера шрифта для экранов меньше 600px */
+            }
+        }
+
+/*Стиль навигатора по меню*/
+.navbar {
+	display: flex;
+	justify-content: space-evenly;
+	max-height: 40%;
+	max-width: 90%;
+	margin-top: 7%;
+	margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+	border: 1px solid snow;
+	border-radius: 8px;
+}
+.navbar a {
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 160%;
+}
+.navbar a:hover {
+    background-color: #ddd;
+    color: black;
+}
+.navbar a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+/*Стиль основного контента пиццерии*/
+.section {
+    display:flex;
+    justify-content: space-between;
+    margin-bottom: 7%;
+}
+
+/*Стиль меню/товаров пиццерии*/
+.content {
+	display: inline-block;
+	margin-top: 7%;
+	overflow: auto;
+	overflow-x: hidden;
+	width: 90%;
+}
+
+.category {
+	display: flex;
+	justify-content: space-evenly;
+	flex-wrap: wrap;
+	border: black;
+	margin: 3%;
+}
+.category h1 {
+	margin-bottom: 3%;
+	width: 100%;
+	color:white;
+}
+
+.product {
+	padding: 7%;
+}
+
+.column {
+    float: left;
+    width: 30%;
+    margin-bottom: 16px;
+    padding: 0 8px;
+}
+@media screen and (max-width: 650px) {
+    .column {
+        width: 100%;
+        display: block;
+    }
+}
+
+.product {
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.8);
+	text-align: center;
+	height: 95%;
+}
+.product img{
+    border-radius: 8px;
+    height: 290.5px;
+}
+
+.container::after, .row::after {
+    content: "";
+    clear: both;
+	display: flex;
+	justify-content: space-evenly;
+	flex-wrap: wrap;
+}
+
+.container h2{
+    font-size: 20px;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.container p{
+    margin-top: 2%;
+    margin-bottom: 2%;
+    height: 85px;
+}
+
+.container button{
+    min-height: 30px;
+    width: 40%;
+    font-size: 14px;
+}
+
+.container input{
+    width: 76%;
+    height: 25px;
+    margin-top: 10px;
+}
+
+.button {
+    background-color: white;
+    color: black;
+    margin-top: 2%;
+    border: 1px solid black;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.button:hover {
+    background-color: #555;
+    text: white;
+}
+
+.menu {
+    max-width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    width: 1200px;
+}

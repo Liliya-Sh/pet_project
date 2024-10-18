@@ -1,0 +1,117 @@
+/*Стили для общего шаблона*/
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html, body {
+    background-image: url('../images/back.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    margin: 0;
+	padding: 0;
+    width: 100%;
+	min-height: 100vh;
+    max-width: 100%;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+/*Стили Главное меню*/
+.topnav {
+    background-color: #333;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    transition: top 0.3s;
+}
+
+.topnav a {
+    float: right;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    text-decoration: none;
+}
+
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+    opacity: 0.8;
+}
+
+/*Стили Основного контента*/
+.wrapper {
+    margin-top: 50px;
+}
+
+.page {
+    padding-bottom: 90px;
+}
+
+/*Стили Кнопка переброса вверх*/
+.myBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 42px;
+  z-index: 1000;
+  font-size: 17px;
+  border: none;
+  outline: none;
+  color: white;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+}
+
+.myBtn:hover {
+    color: black;
+    background-color: #ddd;
+}
+
+/*Стили для контактной информации*/
+.footer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+	height: 115px;
+	box-sizing: border-box;
+	background: rgba(204, 204, 204, 0.43);
+	padding: 15px;
+	color: white;
+	font-family: sans-serif;
+}
+.footer p {
+    font-size: 15px;
+    margin: 8px;
+}
+
+.social-media {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 29px;
+}
+.social-media a {
+    margin: 0 10px;
+}
+.social-media img {
+    width: 30px;
+    height: auto;
+}
+.instagram, .vk. .whatsapp {
+    height:25px;
+}

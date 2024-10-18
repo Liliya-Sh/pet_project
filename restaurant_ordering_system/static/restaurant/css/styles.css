@@ -1,0 +1,25 @@
+/*Стиль страницы "Акции"*/
+.coupon {
+    border: 5px dotted #bbb;
+    width: 20%;
+    border-radius: 15px;
+    margin: 0 auto;
+    margin-top: 5%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-content: space-around;
+}
+
+.stocks{
+    font-size: 15px;
+    text-align: center;
+    padding: 10px;
+}
+
+.stock{
+    font-size: 15px;
+    text-align: center;
+}

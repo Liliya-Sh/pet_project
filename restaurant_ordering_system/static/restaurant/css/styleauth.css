@@ -1,0 +1,259 @@
+/*Стили "Авторизация"*/
+.modal h1 {
+    color: white;
+    text-align: center;
+    padding: 50px;
+}
+
+.modal-content {
+    margin-inline: 34%;
+    width: 95%;
+
+}
+
+.modal-content input{
+    height: 26px;
+    border: 1px solid #696969;
+    border-radius: 4px;
+    padding-left: 7px;
+}
+
+.animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+}
+
+.auth_popup {
+    width: 30%;
+    padding: 2%;
+    background: rgba(255, 255, 255, 0.8);
+    color: black;
+    font-family: sans-serif;
+    font-size: 14px;
+    border-radius: 9px;
+}
+.auth_popup label {
+    display: inline-block;
+    vertical-align: top;
+    margin-bottom: 2%;
+}
+.auth_popup input[type=text], input[type=password] {
+    width: 100%;
+    padding: 3px 8px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+.auth_popup button {
+    background-color: white;
+    border-radius: 5px;;
+    color: black;
+    padding: 7px 20px;
+    margin: 8px 32.5%;
+    border: none;
+    cursor: pointer;
+    width: 35%;
+}
+.auth_popup button:hover {
+    background-color: #696969;
+}
+.auth_popup div{
+    display: flex;
+    justify-content: space-evenly;
+}
+.reset-psw{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.btn_popup a {
+    color: black;
+    text-align: center;
+    padding-block: 8px;
+    text-decoration: none;
+    width: 50%;
+    border-radius: 4px;
+}
+.btn_popup a:hover {
+    background-color: #333;
+    color: white;
+    opacity: 0.8;
+}
+
+.close-auth {
+    position: absolute;
+    right: 35%;
+    /*top: 26%;*/
+    color: #000;
+    font-size: 27px;
+    font-weight: bold;
+}
+.close-auth:hover,
+.close-auth:focus {
+    color: red;
+    cursor: pointer;
+}
+
+/*Стиль страницы "Регистрация"*/
+.register {
+    overflow: auto;
+    overflow-x: hidden;
+    width: 70%;
+    height: 400px;
+    border: 1px solid white;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+    margin-inline: auto;
+}
+
+h3 {
+    padding: 50px;
+    font-size: 27px;
+    font-family: sans-serif;
+    color: white;
+    text-align: center;
+}
+
+.register form{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.row-register {
+    display: flex;
+    margin-block: 37px;
+    flex-wrap: nowrap;
+    width: 100%;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+div.col-md-6.mb-3 {
+    margin-left: 2%;
+    margin-right: 2%;
+    width: 40%;
+    font-size: 15px;
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+.btn.btn-primary {
+    background-color: #333;
+    height: 30px;
+    width: 155px;
+    border-radius: 4px;
+    margin: 1%;
+    color: white;
+    transition: top 0.3s;
+}
+
+.btn.btn-primary:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+span.psw {
+    float: right;
+}
+
+.section{
+    font-size: 15px;
+    text-align: center;
+}
+
+@-webkit-keyframes animatezoom {
+    from {-webkit-transform: scale(0)}
+    to {-webkit-transform: scale(1)}
+}
+
+@keyframes animatezoom {
+    from {transform: scale(0)}
+    to {transform: scale(1)}
+}
+
+/* Изменение стилей кнопок на очень маленьких экранах */
+@media screen and (max-width: 300px) {
+    span.psw {
+       display: block;
+       float: none;
+    }
+    .cancelbtn {
+       width: 100%;
+    }
+}
+
+/* Стили для страницы профеля пользователя */
+.user-profile{
+    margin: 0 auto;
+
+    max-width: 600px;
+    padding: 2%;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.8);
+    font-family: sans-serif;
+    font-size: 14px;
+}
+
+.profile{
+    display: flex;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
+}
+.profile p{
+    display: flex;
+    flex-direction: column;
+    padding: 7px;
+    align-items: baseline;
+}
+.profile input{
+    height: 22px;
+    border: 1px solid #696969;
+    border-radius: 4px;
+    padding-left: 7px;
+}
+.profile label{
+    margin-bottom: 5px;
+}
+
+.psw {
+    text-align: right;
+}
+.psw a {
+    text-decoration: none;
+    color: black;
+    font-size: 85%;
+}
+
+/* Стили для страницы восстановления и изменения пароля */
+.message-reset-psw{
+    text-decoration: none;
+    color: white;
+    font-size: 21px;
+}
+.message-reset-psw p{
+    margin: 55px;
+}
+
+.pswd-reset{
+    margin: 45px;
+    color: white;
+    font-size: 18px;
+}
+.pswd-reset a{
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+}
+.pswd-reset a: hover{
+    color: red;
+}

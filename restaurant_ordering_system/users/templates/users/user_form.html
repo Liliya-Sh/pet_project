@@ -1,9 +1,15 @@
-{% extends 'base.html' %}
+{% extends 'base_restaurant.html' %}
+{% load static %}
+
 {% block content %}
-<form method="POST" enctype="multipart/form-data">
-    <h3>Профиль</h3>
+<h3>Профиль</h3>
+<div class="user-profile">
+  <form method="POST" class="profile" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit" class="btn btn-primary">Сохранить</button>
-</form>
+  </form>
+  <span class="psw"><a href="{% url 'users:password_change' %}">Сменить пароль?</a></span>
+</div>
+
 {% endblock %}

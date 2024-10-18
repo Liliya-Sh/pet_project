@@ -1,0 +1,18 @@
+{% extends 'base_restaurant.html' %}
+{% load static %}
+
+{% block content %}
+<div class="user-order" >
+  <div class="basket-info">
+    {% include "cart/detail.html" %}
+  </div>
+
+  <div class="order-info">
+    <form method="post" class="order-form">
+      {{ form.as_p }}
+      <p><input class='button' type="submit" value="Оформить заказ"></p>
+      {% csrf_token %}
+    </form>
+  </div>
+</div>
+{% endblock %}

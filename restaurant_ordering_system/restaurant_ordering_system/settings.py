@@ -36,8 +36,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'orders.apps.OrdersConfig',
-    'users.apps.UsersConfig',
+    'users',
+    'restaurant_website',
+    'cart',
+    'orders',
 
 ]
 
@@ -66,6 +68,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
+                'cart.context_processors.cart',
             ],
         },
     },
@@ -117,11 +121,11 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-# общий путь к статике
-STATIC_ROOT = (BASE_DIR / 'static')
-
 # дополнительные пути к статике
-STATICFILES_DIRS = (BASE_DIR / 'orders/static',)
+STATICFILES_DIRS = [BASE_DIR / 'static']
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -131,13 +135,21 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # mailing service
 EMAIL_HOST = 'smtp.yandex.ru'
 EMAIL_PORT = 465
-EMAIL_HOST_USER = 'django-test-alex77bel@yandex.ru'
-EMAIL_HOST_PASSWORD = 'nqlxykqluoiwvzwd'
+EMAIL_HOST_USER = 'Lilek888888@yandex.ru'
+EMAIL_HOST_PASSWORD = 'zcxxqadwiptmxrfe'
+# EMAIL_HOST_USER = 'django-test-alex77bel@yandex.ru'
+# EMAIL_HOST_PASSWORD = 'nqlxykqluoiwvzwd'
 EMAIL_USE_SSL = True
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 SERVER_EMAIL = EMAIL_HOST_USER
 EMAIL_ADMIN = EMAIL_HOST_USER
 
+
 AUTH_USER_MODEL = 'users.User'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+LOGIN_URL = 'users:login'
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+
+CART_SESSION_ID = 'cart'
