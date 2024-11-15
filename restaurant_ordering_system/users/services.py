@@ -1,6 +1,6 @@
 from django.core.mail import send_mail
 
-from pet_project.restaurant_ordering_system.restaurant_ordering_system import settings
+from restaurant_ordering_system import settings
 
 
 def sendmail(message, recipient, subject='Рассылка Django'):  # отправка письма

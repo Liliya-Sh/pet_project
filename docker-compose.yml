@@ -1,0 +1,42 @@
+version: "3.5"
+services:
+  app:
+    image: pet_project
+    build:
+      context: .
+    ports:
+      - "8000:8000"
+    depends_on:
+      app-postgres:
+        condition: service_healthy
+    volumes:
+      - "/opt/pet_project_static:/static"
+      - "./pet_project:/pet_project"
+    environment:
+      DJANGO_SECRET_KEY: 'django-insecure-_&bvislj*q%q+3v(!4p^g^5jv6+=zbwg**(xdfphr)fa7!m4gm'
+      DJANGO_DEBUG: 'True'
+      POSTGRES_DB: kitchen_db
+      POSTGRES_USER: user_admin
+      POSTGRES_PASSWORD: password
+      POSTGRES_HOST: app-postgres
+      POSTGRES_PORT: 5432
+      EMAIL_HOST_USER: 'Lilek888888@yandex.ru'
+      EMAIL_HOST_PASSWORD: 'zcxxqadwiptmxrfe'
+    restart: always
+
+  app-postgres:
+    image: postgres:16-alpine
+    ports:
+      - "5432:5432"
+    volumes:
+      - "/opt/pet_project_data:/var/lib/postgresql/data"
+    environment:
+      POSTGRES_DB: kitchen_db
+      POSTGRES_USER: user_admin
+      POSTGRES_PASSWORD: password
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready", "-U", "postgres"]
+      interval: 1s
+      timeout: 5s
+      retries: 10
+    restart: always

@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 import os
 from pathlib import Path
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -19,12 +20,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-_&bvislj*q%q+3v(!4p^g^5jv6+=zbwg**(xdfphr)fa7!m4gm'
+# SECRET_KEY = 'django-insecure-_&bvislj*q%q+3v(!4p^g^5jv6+=zbwg**(xdfphr)fa7!m4gm'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY',
+                            'django-insecure-_&bvislj*q%q+3v(!4p^g^5jv6+=zbwg**(xdfphr)fa7!m4gm')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['kitchen','127.0.0.1']
 
 # Application definition
 
@@ -41,10 +44,14 @@ INSTALLED_APPS = [
     'cart',
     'orders',
 
+    'whitenoise.runserver_nostatic',
+    'whitenoise',
+
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -82,10 +89,21 @@ WSGI_APPLICATION = 'restaurant_ordering_system.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv('POSTGRES_DB', 'kitchen_db'),
+        'USER': os.getenv('POSTGRES_USER', 'user_admin'),
+        'PASSWORD': os.getenv('POSTGRES_PASSWORD', 'password'),
+        'HOST': os.getenv('POSTGRES_HOST','127.0.0.1'),
+        'PORT': os.getenv('POSTGRES_PORT','5432'),
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -135,8 +153,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # mailing service
 EMAIL_HOST = 'smtp.yandex.ru'
 EMAIL_PORT = 465
-EMAIL_HOST_USER = 'Lilek888888@yandex.ru'
-EMAIL_HOST_PASSWORD = 'zcxxqadwiptmxrfe'
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 # EMAIL_HOST_USER = 'django-test-alex77bel@yandex.ru'
 # EMAIL_HOST_PASSWORD = 'nqlxykqluoiwvzwd'
 EMAIL_USE_SSL = True

@@ -3,7 +3,7 @@ from . import views
 from .views import HomePageView
 
 app_name = 'restaurant_website'
-register_converter(converters.FourDigitYearConverter, "year4")
+#register_converter(converters.FourDigitYearConverter, "year4")
 
 urlpatterns = [
     path('', views.home_restaurant, name='home_restaurant'),
