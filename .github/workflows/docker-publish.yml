@@ -28,7 +28,7 @@ jobs:
 
       - name: Build and Push Container
         run: |-
-          docker build -t "${{ env.REGISTRY }}/${{ github.repository }} :${{ github.sha }}" -t "${{env.REGISTRY }}/${{ github.repository }}:latest" .
+          docker build -t "${{ env.REGISTRY }}/${{ github.repository }}:${{ github.sha }}" -t "${{env.REGISTRY }}/${{ github.repository }}:latest" .
           docker push --all-tags "${{ env.REGISTRY }}/${{ github.repository }}"
 
   deploy:
@@ -36,7 +36,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checout@v3
+        uses: actions/checkout@v3
 
       - name: Docker Deployment
         uses: wshihadeh/docker-deployment-action@v2
