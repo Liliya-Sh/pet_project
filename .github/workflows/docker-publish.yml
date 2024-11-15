@@ -6,7 +6,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
+  IMAGE_NAME: ${{ github.repository | toLower }}
 
 jobs:
   build:
@@ -16,7 +16,7 @@ jobs:
       packages: write
 
     steps:
-      - name: Chekout repository
+      - name: Checkout repository
         uses: actions/checkout@v3
 
       - name: Log into registry ${{ env.REGISTRY }}
@@ -28,8 +28,8 @@ jobs:
 
       - name: Build and Push Container
         run: |-
-          docker build -t "${{ env.REGISTRY }}/${{ github.repository }}:${{ github.sha }}" -t "${{env.REGISTRY }}/${{ github.repository }}:latest" .
-          docker push --all-tags "${{ env.REGISTRY }}/${{ github.repository }}"
+          docker build -t "${{ env.REGISTRY }}/${{ github.repository | toLower}}:${{ github.sha }}" -t "${{env.REGISTRY }}/${{ github.repository | toLower}}:latest" .
+          docker push --all-tags "${{ env.REGISTRY }}/${{ github.repository | toLower }}"
 
   deploy:
     needs: [build]
