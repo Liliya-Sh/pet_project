@@ -6,7 +6,7 @@ COPY ./requirements.txt .
 RUN pip install --upgrade pip
 RUN pip install -r  requirements.txt
 
-COPY ./pet_project .
+COPY ./restaurant_ordering_system /pet_project/restaurant_ordering_system
 COPY ./run.sh .
 
 ENV PYTHONDONTWRITEBYTECODE 1
