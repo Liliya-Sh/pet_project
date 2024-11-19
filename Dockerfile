@@ -15,4 +15,5 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED=1
 
 RUN chmod +x /run.sh
+
 CMD ["sh","/run.sh"]
