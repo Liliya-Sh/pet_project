@@ -14,6 +14,6 @@ COPY ./run.sh .
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED=1
 
-RUN chmod +x /run.sh
+RUN chmod +x /pet_project/run.sh
 
-CMD ["sh","/run.sh"]
+CMD ["sh","/pet_project/run.sh"]
