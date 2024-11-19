@@ -16,4 +16,4 @@ ENV PYTHONUNBUFFERED=1
 
 RUN chmod +x /pet_project/run.sh
 
-CMD ["sh","/pet_project/run.sh"]
+CMD ["sh","/run.sh"]
