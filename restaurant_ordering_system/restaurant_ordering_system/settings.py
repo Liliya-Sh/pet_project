@@ -27,7 +27,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY',
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['kitchen','127.0.0.1']
+ALLOWED_HOSTS = ['kitchen','127.0.0.1', '185.236.23.123']
 
 # Application definition
 
@@ -137,7 +137,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # дополнительные пути к статике
 STATICFILES_DIRS = [BASE_DIR / 'static']
